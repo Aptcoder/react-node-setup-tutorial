@@ -11,20 +11,6 @@ app.get('/api/hello', (req, res) => {
     })
 })
 
-if (process.env.NODE_ENV === 'production'){
-    app.use(express.static('client/build'));
-    const path = require('path');
-    app.get('*', (req, res) => {
-    res.sendFile(path.resolve('client', 'build', 'index.html'));
-  });
-}
-else {
-    app.get('*', (req,res) => {
-        res.send({
-            message: 'route not found'
-        })
-    })
-}
 
 app.listen(PORT,() => {
     console.log('Server is listening at port:', PORT)
